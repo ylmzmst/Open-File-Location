@@ -1,0 +1,16 @@
+Sub dosyakonumu()
+
+Set swApp = Application.SldWorks
+Set swpart = swApp.ActiveDoc
+
+Dim modelpath As String
+Dim modeldir As String
+
+modelpath = swpart.GetPathName
+modeldir = Left(modelpath, InStrRev(modelpath, "\") - 1)
+
+On Error Resume Next
+ac = Shell("Explorer /e,/root," + modeldir, 1)
+AppActivate ac
+
+End Sub
